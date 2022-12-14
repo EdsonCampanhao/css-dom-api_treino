@@ -15,6 +15,8 @@ async function createEnemy() {
            fetchedPokemon.stats[1].base_stat);
         employEnemy();  
         enemyHp= selectedPokemon[0].hp*2
+        barOfHealthyEnemy.value= selectedPokemon[0].hp*2
+        barOfHealthyEnemy.max= selectedPokemon[0].hp*2
            
 }
 createEnemy();

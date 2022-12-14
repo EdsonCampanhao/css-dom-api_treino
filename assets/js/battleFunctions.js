@@ -12,7 +12,9 @@ let priorityEnemy = 0
 let dice = 0
 //console of battle
 let consoleOfBattle = document.querySelector('.area');
-let textOfConsole = []
+//bars of life
+let barOfHealthyEnemy = document.querySelector('.battlefield__healthyBar-1');
+let barOfHealthyAlly = document.querySelector('.battlefield__healthyBar-2');
 
 function attack(valueOfAttack, target, action) {
     damage = (10 + (valueOfAttack * (Math.random() * 1)))
@@ -21,11 +23,11 @@ function attack(valueOfAttack, target, action) {
             target = target - damage
             enemyHp = target
 
-            
+
 
             if (action == 'defense') {
                 console.log('o inimigo defendeu o ataque')
-               consoleOfBattle.value='o inimigo defendeu o ataque'
+                consoleOfBattle.value = 'o inimigo defendeu o ataque'
                 enemyHp = target + damage
                 priorityEnemy = -6
             }
@@ -33,39 +35,43 @@ function attack(valueOfAttack, target, action) {
                 dodge = Math.floor(Math.random() * 6)
                 if (dodge <= 2) {
                     console.log('o inimigo desviou')
-                    consoleOfBattle.value='o inimigo desviou'
+                    consoleOfBattle.value = 'o inimigo desviou'
                     enemyHp = target + damage
 
                 } else if (dodge <= 4) {
 
                     console.log('o inimigo tentou desviar, mas foi atingido de raspão')
-                    consoleOfBattle.value='o inimigo tentou desviar, mas foi acertado de raspão'
+                    consoleOfBattle.value = 'o inimigo tentou desviar, mas foi acertado de raspão'
                     enemyHp = target + (damage / 2)
+                    barOfHealthyEnemy.value = barOfHealthyEnemy.value - (damage / 2)
 
                 } else {
                     console.log('o inimigo tentou desviar, mas não conseguiu')
-                    consoleOfBattle.value=`o inimigo tentou desviar, mas não conseguiu e recebeu ${Math.floor(damage)} de dano `
+                    consoleOfBattle.value = `o inimigo tentou desviar, mas não conseguiu e recebeu ${Math.floor(damage)} de dano `
+                    barOfHealthyEnemy.value = barOfHealthyEnemy.value - damage
                 }
 
-
-            } else{ 
+                priorityEnemy = 6
+            } else {
                 console.log(`o pokemon inimigo recebeu ${Math.floor(damage)} de dano `);
-                consoleOfBattle.value=`o pokemon inimigo recebeu ${Math.floor(damage)} de dano `
-        }
-        console.log(priorityEnemy);
-            priorityEnemy = 6
-           
 
-           
+                consoleOfBattle.value = `o pokemon inimigo recebeu ${Math.floor(damage)} de dano `
+                barOfHealthyEnemy.value = barOfHealthyEnemy.value - damage
+            }
+            console.log(priorityEnemy);
+
+
+
+
         } else {
             target = target - damage
             allyHp = target
 
             console.log(`o seu pokemon recebeu ${Math.floor(damage)} de dano `)
-            
+
             if (action == 'defense') {
                 console.log('porém conseguiu defender')
-                consoleOfBattle.value=`o seu pokemon defendeu ${Math.floor(damage)} de dano `
+                consoleOfBattle.value = `o seu pokemon defendeu ${Math.floor(damage)} de dano `
                 allyHp = target + damage
                 priorityAlly = +6
             }
@@ -73,20 +79,25 @@ function attack(valueOfAttack, target, action) {
                 dodge = Math.floor(Math.random() * 6)
                 if (dodge <= 2) {
                     console.log('seu pokemon conseguiu desviar')
-                    consoleOfBattle.value='seu pokemon conseguiu desviar'
+                    consoleOfBattle.value = 'seu pokemon conseguiu desviar'
                     allyHp = target + damage
+
 
                 } else if (dodge <= 4) {
 
                     console.log('tentou desviar, mas foi atingido de raspão')
-                    consoleOfBattle.value='seu pokemon tentou desviar, mas foi atingido de raspão'
+                    consoleOfBattle.value = 'seu pokemon tentou desviar, mas foi atingido de raspão'
                     allyHp = target + (damage / 2)
+                    barOfHealthyAlly.value = barOfHealthyAlly.value - (damage / 2)
 
                 } else {
                     console.log('tentou desviar, mas não conseguiu')
+                    consoleOfBattle.value = `seu pokemon tentou desviar, mas foi atingido e recebeu ${Math.floor(damage)} de dano`
+                    barOfHealthyAlly.value = barOfHealthyAlly.value - damage
                 }
                 priorityAlly = -6
             }
+            barOfHealthyAlly.value = barOfHealthyAlly.value - damage
         }
     }
 
@@ -109,13 +120,13 @@ buttonOfAttack.addEventListener('click', (event) => {
             attack(selectedPokemon[0].atk, allyHp)
             if (allyHp <= 0) {
                 console.log('o seu pokemon foi derrotado')
-                setTimeout(()=>{ consoleOfBattle.value='o seu pokemon foi derrotado'}, 1000)
+                setTimeout(() => { consoleOfBattle.value = 'o seu pokemon foi derrotado' }, 1000)
             } else {
                 attack(selectedPokemon[1].atk, enemyHp)
                 if (enemyHp <= 0) {
                     console.log('o  pokemon inimigo foi derrotado')
-                    setTimeout(()=>{ consoleOfBattle.value='o pokemon inimigo foi derrotado'}, 1000)
-               
+                    setTimeout(() => { consoleOfBattle.value = 'o pokemon inimigo foi derrotado' }, 1000)
+
                 }
             }
         }
@@ -127,15 +138,15 @@ buttonOfAttack.addEventListener('click', (event) => {
             attack(selectedPokemon[1].atk, enemyHp)
             if (enemyHp <= 0) {
                 console.log('o  pokemon inimigo foi derrotado')
-                setTimeout(()=>{ consoleOfBattle.value='o pokemon inimigo foi derrotado'}, 1000)
-               
+                setTimeout(() => { consoleOfBattle.value = 'o pokemon inimigo foi derrotado' }, 1000)
+
             }
             else {
                 attack(selectedPokemon[0].atk, allyHp)
                 if (allyHp <= 0) {
-                console.log('o seu pokemon foi derrotado')
-                setTimeout(()=>{ consoleOfBattle.value='o seu pokemon foi derrotado'}, 1000)
-            }
+                    console.log('o seu pokemon foi derrotado')
+                    setTimeout(() => { consoleOfBattle.value = 'o seu pokemon foi derrotado' }, 1000)
+                }
             }
         }
 
@@ -150,7 +161,7 @@ buttonOfAttack.addEventListener('click', (event) => {
             console.log('o  pokemon inimigo foi derrotado')
         }
     }
-    
+
 })
 
 buttonOfDefense.addEventListener('click', (event) => {
@@ -164,11 +175,11 @@ buttonOfDefense.addEventListener('click', (event) => {
         attack(selectedPokemon[0].atk, allyHp, 'defense')
     }
     else if (dice <= 4) {
-        consoleOfBattle.value='ambos os pokemons tentaram defender'
+        consoleOfBattle.value = 'ambos os pokemons tentaram defender'
         console.log('ambos os pokemons tentaram defender')
         priorityEnemy = -6
     } else {
-        consoleOfBattle.value='o pokemon inimigo se afastou enquanto você defendia'
+        consoleOfBattle.value = 'o pokemon inimigo se afastou enquanto você defendia'
         console.log('o pokemon inimigo se afastou enquanto você defendia')
         priorityEnemy = 6
     }
@@ -186,16 +197,19 @@ buttonOfDodge.addEventListener('click', (event) => {
     //enemy atack with dice= 2 or less
     if (dice <= 3) {
         attack(selectedPokemon[0].atk, allyHp, 'dodge');
-        if (enemyHp <= 0) {
-            console.log('o  pokemon inimigo foi derrotado')
+        if (allyHp <= 0) {
+            console.log('o seu pokemon  foi derrotado')
+            consoleOfBattle.value = 'o seu pokemon foi derrotado'
         }
 
     }
     else if (dice <= 4) {
         console.log('você se afastou enquanto o inimigo esperava para defender')
+        consoleOfBattle.value = 'você se afastou enquanto o inimigo esperava para defender'
         priorityEnemy = -6
     } else {
-        console.log('ambos os pokemons aguardavam para desviar')
+        console.log('ambos os pokemons aguardaram para desviar')
+        consoleOfBattle.value = 'ambos os pokemons aguardaram para desviar'
         priorityEnemy = 6
     }
     priorityAlly = -6
