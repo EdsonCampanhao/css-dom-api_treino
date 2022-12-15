@@ -26,6 +26,8 @@ html {
 body {
   display: flex;
   flex-direction: column;
+
+  background: linear-gradient(180deg, #1C2B59, #F2B807) !important;
 }
 
 .headerContainer {
@@ -38,11 +40,13 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .headerContainer__title {
   color: #fff;
   font-size: 24px;
 }
-.createTeamContainer {
+
+/* .createTeamContainer {
   width: 50%;
   margin: 0 auto;
   padding: 50px;
@@ -58,7 +62,7 @@ body {
   padding-bottom: 8px;
   text-transform: uppercase;
   line-height: 1.7;
-}
+} */
 
 .createTeamContainer__input {
   border-radius: 20px;
@@ -139,7 +143,7 @@ body {
   justify-content: center;
   align-items: center;
   height: inherit;
-  background: linear-gradient(#1ccad8, #2f97c1, #587291);
+  /* background: linear-gradient(#1ccad8, #2f97c1, #587291); */
   width: 90%;
   height: 70%;
   margin: auto;
@@ -207,17 +211,17 @@ progress::-webkit-progress-bar {
   text-align: center;
 }
 
-.battlefield__buttons > .batlefield__action {
+/* .battlefield__buttons > .batlefield__action {
   padding: 3px 30px;
   border: none;
   transition: 0.4s ease-out all;
   cursor: pointer;
   border-radius: 5px;
-}
+} */
 
-.battlefield__buttons > .batlefield__action:hover {
+/* .battlefield__buttons > .batlefield__action:hover {
   transform: scale(1.4);
-}
+} */
 
 .area__text {
   position: absolute;
@@ -248,15 +252,4 @@ textarea {
   left: 37rem;
 }
 
-@keyframes onHitEfect {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  35% {
-    transform: translateX(-15%);
-  }
-  70% {
-    transform: translateX(15%);
-  }
-}
+

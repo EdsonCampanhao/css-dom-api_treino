@@ -55,6 +55,12 @@ body {
     line-height: 1.7;
 }
 
+.text2 {
+    white-space: nowrap;
+
+    
+}
+
 .createTeamContainer__input{
     border-radius: 20px;
     padding-left: 5px;
@@ -134,12 +140,12 @@ body {
     justify-content: center;
     align-items: center;
     height: inherit;
-    background: linear-gradient(#1CCAD8, #2F97C1, #587291);
+    background: linear-gradient(-180deg, #1C2B59, #3365A6);
     width: 90%;
     height: 70%;
     margin: auto;
     border-radius: 25px;
-    box-shadow: 0px 5px 4px rgba(0 0 0 / 0.2);
+    box-shadow: 0px 0px 50px #1C2B59;
 }
 
 /* BATTLE_FIELD */
@@ -150,7 +156,6 @@ body {
     background-size: cover;
     background-position-y: 100%;
     border-radius: 25px;
-    min-width: 1300px;
     height: 100%;
     position: relative;
 }
@@ -183,16 +188,54 @@ progress {
     z-index: 1;
 } 
 
-  progress::-webkit-progress-bar {
+progress::-webkit-progress-bar {
     /* background-color: #00ff4099; */
     background-color: #212121;
     border-radius: 10px;
-  }
+}
 
 
 /* BUTTONS GAME */
 
-.battlefield__buttons {
+.enemyApresentation__botao {
+    padding: 9px 45px;
+    border-radius: 100vmax;
+    text-transform: uppercase;
+    margin: 2rem 0;
+}
+
+.enemyApresentation__text {
+    text-transform: uppercase;
+
+    color: #fefefe;
+    text-shadow: 0px 5px 10px #000;
+
+    font-size: 23px;
+}
+
+section > button {
+    padding: 9px 45px;
+    border-radius: 100vmax;
+    margin: 1rem 0;
+}
+
+button {
+    cursor: pointer;
+    transition: 0.4s ease-out all;
+}
+
+.battlefield__buttons > .btns {
+    padding: 4px;
+    border-radius: 100vmax;
+}
+
+button:hover {
+    transform: scale(1.1);
+
+    box-shadow: 0px 5px 10px #121212;
+}
+
+/* .battlefield__buttons {
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -213,7 +256,7 @@ progress {
 
 .battlefield__buttons > .batlefield__action:hover {
     transform: scale(1.4);
-}
+} */
 
 .area__text {
     position: absolute;
@@ -228,5 +271,11 @@ textarea {
     background-color: rgba(255, 255, 255, .8);
     border: 10px double #000;
 }
+
+img.pokemon {
+    width: 400px;
+}
+
+
 
 /* CHILDS POKEMON */
