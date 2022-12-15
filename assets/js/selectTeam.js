@@ -89,6 +89,8 @@ button.addEventListener('click', async (event) => {
                 battlefield.classList.remove('none')
                 employAlly()
                 allyHp= selectedPokemon[1].hp*2
+                barOfHealthyAlly.value= selectedPokemon[1].hp*2
+                barOfHealthyAlly.max= selectedPokemon[1].hp*2
                 pokemonsSelected = document.querySelectorAll('.createTeamContainer__pokemon');
 
                 pokemonEnemy = pokemonsSelected[2]
